@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'AddMark.css' %}">
+    <style>
+        body {
+            background-image: url({% static 'AddSubject.jpg' %});
+            width: 100%;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            height: 100%;
+            z-index: 1;
+          }
+    </style>
+</head>
+<body>
+  <ul>
+    <li><a style="color: white; text-decoration:none;" href="#">Dashboard</a></li> 
+    <li><a style="color: white; text-decoration:none;" href="#">Add Marks</a></li>
+    <li><a style="color: white; text-decoration:none;" href="#">Add Subject</a></li>
+    <li><a style="color: white; text-decoration:none;" href="#">Logout</a></li>
+  </ul>        
+        <div class="container">
+          <form method="POST" action="addmark" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1>{{std.studname}}</h1>
+            <div class="left">
+              Roll No: {{std.studroll}}<!-- <label><input type="text" style="width: 250px;" placeholder="Enter Roll No"></label><br /><br /> -->
+              Class Name: <label></label>
+              <p>Subject Code</p>
+              <select>
+                <option>RCS 081</option>
+              </select>
+              <br /><br /><br /><label>Upload</label><br /><br />
+              {{form.upload}}
+              <!-- <input type="file" value="Upload Answer Sheet" name="file" /> -->
+            </div>
+            <div class="right">
+              Semester: <label></label><br /><br />
+              Branch: <label></label>
+              <p>Marks Obtain</p>
+              <div>
+              {{form.marks_obtain}}
+              </div>
+              <!-- <input type="text" name="marks" placeholder="Enter the Marks" /> -->
+              
+            </div>
+            <input
+              class="btn"
+              type="submit"
+              value="Save"
+           />
+          </form>
+        </div>
+</body>
+</html>

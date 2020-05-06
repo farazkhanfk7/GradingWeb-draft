@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Student Details</title>
+    <link rel="stylesheet" href="{% static 'AddSubject.css' %}">
+    <style>
+        body{
+            background-image: url({% static 'AddSubject.jpg' %});
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a style="color: white; text-decoration:none;" href="#">Dashboard</a></li> 
+        <li><a style="color: white; text-decoration:none;" href="#">Add Marks</a></li>
+        <li><a style="color: white; text-decoration:none;" href="#">Add Subject</a></li>
+        <li><a style="color: white; text-decoration:none;" href="#">Logout</a></li>
+    </ul>
+    <form action="addstud" method="post" id='abc'>
+        {% csrf_token %}
+        <div id="div1">
+        <h1>Add Student Record</h1>
+        <h2><div class="msg" style="color: rgba(177, 24, 4, 0.918);"></div></h2>
+        <h3 style="margin-left: -490px;">Student Name</h3>
+        <input id="input1" type="text" name="studname" placeholder="Enter student name"> 
+        <h3 style="margin-left: -490px;">Roll Number</h3>
+        <input id="input1" type="text" name="studroll" placeholder="Enter roll no">                          
+        <h3 style="margin-left: -175px;">Course Name<span style="padding-left: 270px;"></span>Branch</h3>
+        <input name = "coursename" id="input4" class="inputs" type="text" placeholder="Enter Class name"><span style="padding-left: 100px;"></span>
+        <input name = "branchname" id="input5" class="inputs" type="text" placeholder="Enter Branch">
+        <h3 style="margin-left: -530px;">Semester</h3>
+        <input name = "sem" id="input2" type="text" placeholder="Enter Semester"><span style="padding-left: 100px;"></span>
+        <button type="submit">Save</button>
+        </div>   
+    </form>  
+    <script>
+        
+    </script> 
+</body>
+</html>
