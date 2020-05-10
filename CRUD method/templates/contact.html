@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-2">
+        <form action="contact" method="POST">
+            {% csrf_token %}
+            <div class="card">
+                <div class="form-group card-body">
+                    <label for="exampleInputEmail1">First Name</label>
+                    <input type="text" name="fname" class="form-control"  placeholder="Enter first name">
+                </div>
+                <div class="form-group card-body">
+                    <label for="exampleInputPassword1">Last Name</label>
+                    <input type="text" name="lname" class="form-control" placeholder="Enter last name">
+                </div>
+                <div class="card-body">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+        
+        <div class="card mt-5" style="width: auto">
+            <div class="card-header">
+                Details
+            </div>
+            <ul class="list-group list-group-flush">
+              {% for name in names %}
+                <li class="list-group-item">{{name.fname}} {{name.lname}}<a class="btn btn-danger btn-sm float-right" href="/contact?id={{name.id}}&method=delete" role="button">Delete</a> <a class="btn btn-success btn-sm float-right mr-2" href="/contact?id={{name.id}}&method=edit" role="button">Edit</a> </li>
+              {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
