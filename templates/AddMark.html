@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'AddMark.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         body {
             background-image: url({% static 'AddSubject.jpg' %});
@@ -17,6 +18,26 @@
             height: 100%;
             z-index: 1;
           }
+          .btn{
+            margin-top: 300px;
+            float: right;
+            width: 300px;
+            height: 40px;
+            background: red;
+            border-radius: 20px;
+            margin-right: 10%;
+            display: block;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+        .container h1{
+          margin-left: 36%;
+        }
     </style>
 </head>
 <body>
@@ -27,35 +48,35 @@
     <li><a style="color: white; text-decoration:none;" href="#">Logout</a></li>
   </ul>        
         <div class="container">
-          <form method="POST" action="addmark" enctype="multipart/form-data">
+          <form class="form-group" method="POST" action="addmark" enctype="multipart/form-data">
             {% csrf_token %}
             <h1>{{std.studname}}</h1>
+            {% if messages %}
+            {% for message in messages %}
+            <p {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{message | escape }}</p>
+            {% endfor %}
+            {% endif %}
             <div class="left">
-              Roll No: {{std.studroll}}<!-- <label><input type="text" style="width: 250px;" placeholder="Enter Roll No"></label><br /><br /> -->
-              Class Name: <label></label>
+              Roll No: {{std.studroll}}
+              <br>
+              Class Name: {{std.coursename}} <label></label>
               <p>Subject Code</p>
               <select>
-                <option>RCS 081</option>
+                <option>RCS123</option>
+                <option>REO219</option>
+                <option>RAS069</option>
               </select>
-              <br /><br /><br /><label>Upload</label><br /><br />
+              <br><br><label>Upload</label><br>
               {{form.upload}}
               <!-- <input type="file" value="Upload Answer Sheet" name="file" /> -->
             </div>
             <div class="right">
-              Semester: <label></label><br /><br />
-              Branch: <label></label>
+              Semester: {{std.sem}} <br>
+              Branch: {{std.branchname}}
               <p>Marks Obtain</p>
-              <div>
-              {{form.marks_obtain}}
-              </div>
-              <!-- <input type="text" name="marks" placeholder="Enter the Marks" /> -->
-              
+              <div>{{form.marks_obtain}}</div>
             </div>
-            <input
-              class="btn"
-              type="submit"
-              value="Save"
-           />
+            <button type="submit" class="btn btn-primary">Save Record</button>
           </form>
         </div>
 </body>

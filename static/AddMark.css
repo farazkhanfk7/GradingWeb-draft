@@ -60,10 +60,6 @@ button{
     transform: translate(-50%,-50%);
     border-radius: 12px;
 }
-
-.container h1{
-  margin-left: 250px;
-}
 .left{
     margin-top: 20px;
     display: inline-block;
@@ -92,23 +88,6 @@ button{
     height: 30px;
     width: 70%;
     border: 2px solid black;
-}
-.btn{
-    margin-top: 350px;
-    float: right;
-    width: 300px;
-    height: 40px;
-    background: red;
-    border-radius: 20px;
-    margin-right: 10%;
-    display: block;
-    font-family: monospace;
-    font-weight: bold;
-    font-size: 16px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    transition: 0.25s;
 }
 .btn:hover{
     background: green;

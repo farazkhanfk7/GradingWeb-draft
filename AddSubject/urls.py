@@ -9,7 +9,8 @@ urlpatterns = [
     path('addsub',views.addsub,name="addsub"),
     path('addmark',views.addmark,name="addmark"),
     path('addstud',views.addstud,name="addstud"),
-    path('search',views.search,name="search")
+    path('search',views.search,name="search"),
+    path('upload',views.upload,name="upload")
 ]
 
 if settings.DEBUG:
