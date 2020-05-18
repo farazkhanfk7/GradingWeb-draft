@@ -8,7 +8,7 @@ from accounts.forms import BannerForm
 def home(request):
     return HttpResponse("<h1>Hello</h1>")
 
-def dash(request):
+def dashboard(request):
     return render(request,'dash.html')
 
 def register(request):
