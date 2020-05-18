@@ -9,29 +9,16 @@ class Subject(models.Model):
     Branch = models.CharField(max_length=100)
     Semester = models.IntegerField()
 
-class Mark(models.Model):
-    roll = models.IntegerField()
-    subcode = models.CharField(max_length=60)
-    marks_obtain = models.IntegerField()
-    upload = models.FileField(upload_to='marksheet')
+    def __str__(self):
+        return self.Subject_Code
 
-class Math(models.Model):
+class Marks(models.Model):
     roll = models.IntegerField()
-    subcode = models.CharField(max_length=60)
-    marks_obtain = models.IntegerField()
-    upload = models.FileField(upload_to='marksheet')
+    subjectcode = models.CharField(max_length=20)
+    subcode = models.ForeignKey(Subject,on_delete=models.CASCADE,default=2)
+    marks = models.IntegerField()
+    sheet = models.FileField(upload_to='marksheet')
 
-class Physics(models.Model):
-    roll = models.IntegerField()
-    subcode = models.CharField(max_length=60)
-    marks_obtain = models.IntegerField()
-    upload = models.FileField(upload_to='marksheet')
-
-class Chem(models.Model):
-    roll = models.IntegerField()
-    subcode = models.CharField(max_length=60)
-    marks_obtain = models.IntegerField()
-    upload = models.FileField(upload_to='marksheet')
 
 class Student(models.Model):
     studname = models.CharField(max_length=100)

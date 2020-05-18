@@ -1,25 +1,21 @@
 from django import forms
-from .models import Mark,Student,Math,Physics,Chem,Test,Simple
+from .models import Student,Test,Simple,Subject,Marks
+
+
+class SubForm(forms.ModelForm):
+    class Meta:
+        model = Subject
+        fields = ['Subject_Name','Subject_Code','Max_Marks','Course','Branch','Semester']
 
 class MarkForm(forms.ModelForm):
     class Meta:
-        model = Mark
-        fields = ['marks_obtain','upload']
-
-class MathForm(forms.ModelForm):
-    class Meta:
-        model = Math
-        fields = ['marks_obtain','upload']
-
-class PhyForm(forms.ModelForm):
-    class Meta:
-        model = Physics
-        fields = ['marks_obtain','upload']
-
-class ChemForm(forms.ModelForm):
-    class Meta:
-        model = Chem
-        fields = ['subcode','marks_obtain','upload']
+        model = Marks
+        fields = ['subcode','marks','sheet']
+        widgets = {
+            'subcode':forms.Select(attrs={'class':'form-control'}),
+            'marks':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter Marks'}),
+            'sheet':forms.FileInput(attrs={'class':'form-control'})
+        }
 
 class StudForm(forms.ModelForm):
     class Meta:
