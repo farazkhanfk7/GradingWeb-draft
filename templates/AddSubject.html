@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Subject</title>
+    <link rel="stylesheet" href="{% static 'AddSubject.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body{
+            background-image: url({% static 'AddSubject.jpg' %});
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a style="color: white; text-decoration:none;" href="#">Dashboard</a></li> 
+        <li><a style="color: white; text-decoration:none;" href="/search">Add Marks</a></li>
+        <li><a style="color: white; text-decoration:none;" href="/addstud">Add Student</a></li>
+        <li><a style="color: white; text-decoration:none;" href="#">Logout</a></li>
+    </ul>
+    <form action="addsub" method="post" id='abc'>
+        {% csrf_token %}
+        <div id="div1">
+        {% if messages %}
+        {% for message in messages %}
+        <p {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{message | escape }}</p>
+        {% endfor %}
+        {% endif %} 
+        <h1>Add Subject</h1>
+        <br>
+        <div class="form-group">
+            <label for="exampleInputEmail1"><h6>Subject Name</h6></label>
+            <input type="text" name="subname" class="form-control" id="input11" aria-describedby="emailHelp" placeholder="Enter Subject name">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1"><h6>Subject Code</h6></label>
+            <input type="text" name="subcode" class="form-control" id="input7" placeholder="Enter Subject Code">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1"><h6>Maximum Marks</h6></label>
+            <input type="text" name="maxmarks" class="form-control" id="input3" aria-describedby="emailHelp" placeholder="Enter Maximum marks">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1"><h6>Course Name</h6></label>
+            <input type="text" name="coursename" class="form-control" id="input4" placeholder="Enter Coursename">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1"><h6>Branch Name</h6></label>
+            <input type="text" name="branchname" class="form-control" id="input5" aria-describedby="emailHelp" placeholder="Enter Branchname">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1"><h6>Semester</h6></label>
+            <input type="text" name="sem" class="form-control" id="input6" placeholder="Enter Semester">
+        </div>
+        <button class="btn btn-lg pb-5 btn-danger" type="submit">Save</button>
+        </div>  
+    </form>  
+    <script>
+        const myform = document.querySelector('#abc');
+        const input11 = document.querySelector('#input11');
+        const input7 = document.querySelector('#input7');
+        const input3 = document.querySelector('#input3');
+        const input4 = document.querySelector('#input4');
+        const input5 = document.querySelector('#input5');
+        const input6 = document.querySelector('#input6');
+        const msg = document.querySelector('.msg');
+        myform.addEventListener('submit',onsubmit);
+        function onsubmit(e){
+            if(input11.value===''||input7.value===''||input3.value===''||input4.value===''||input5.value===''||input6.value===''){
+                e.preventDefault();
+               alert("Please Enter all fields")
+            }else{
+                console.log('success');
+            }
+        }
+    </script> 
+</body>
+</html>
